@@ -1,0 +1,23 @@
+<h2>Конвертер валют</h2>
+<div class="converter" *ngIf="toogle; else noConverter">
+    <hr>
+    <select name="convert" id="convert" (change)="onDropdownChange($event)">
+        <option *ngFor = "let opt of money"
+                [selected] = "opt === ngDropdown"
+                [value] = "opt"
+        >{{opt}}</option>
+    </select>
+    <input type="text" (input)="onInputConvert($event)" [value]="textConvert">
+    to
+    <select name="convert-to" id="convert-to" (change)="onDropdownChangeTo($event)">
+        <option *ngFor = "let opt of money"
+                [selected] = "opt === ngDropdownTo"
+                [value] = "opt"
+        >{{opt}}</option>
+    </select>
+    <input type="text" (input)="onInputConvertTo($event)" [value]='textConvertTo' >
+    <hr>
+</div>
+<ng-template #noConverter>
+    <p style="text-align: center">Конвертер з'явиться, як тільки отримає свіжу інформацію про курс валют</p>
+  </ng-template>
